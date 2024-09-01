@@ -1,0 +1,29 @@
+import java.util.Arrays;
+class HelloWorld {
+    public static void main(String[] args) {
+        int a[]={1,2,3};
+        int b[]={4,6,7};
+        int result[]=mergeRes(a,b);
+        
+        System.out.println(Arrays.toString(result));
+    }
+    public static int[] mergeRes(int a[],int b[]){
+        int res[]=new int[a.length+b.length];
+        for(int i=0;i<a.length;i++){
+            res[i]=a[i];
+        }
+        for(int i=0;i<b.length;i++){
+            res[a.length+i]=b[i];
+        }
+        for(int i=0;i<res.length-1;i++){
+            for(int j=0;j<res.length-1-i;j++){
+                if(res[j]<res[j+1]){
+                    int t=res[j];
+                    res[j]=res[j+1];
+                    res[j+1]=t;
+                }
+            }
+        }
+        return res;
+    }
+}
